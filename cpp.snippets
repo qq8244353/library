@@ -25,8 +25,6 @@ snippet template
     #define pcnt __builtin_popcount
     constexpr int INF = 2147483647;
     constexpr i64 I64F = 9223372036854775807;
-    constexpr int m1007 = 1000000007;
-    constexpr int m9982 = 998244353;
     template <class T> bool chmax(T &l, const T &r) { if (l < r) { l = r; return true; } return false; }
     template <class T> bool chmin(T &l, const T &r) { if (l > r) { l = r; return true; } return false; }
     template <class T> pair<int, bool> ub(const vector<T> &v, const T &key) { int ind = upper_bound(v.begin(), v.end(), key) - v.begin(); if (ind == (int)v.size()) return make_pair(0, false); return make_pair(ind, true); }
