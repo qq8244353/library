@@ -1,6 +1,5 @@
 #setl noexpandtab
 snippet template
-    // clang-format off
     #include "bits/stdc++.h"
     #include <unistd.h>
     using namespace std;
@@ -31,7 +30,6 @@ snippet template
     template <class T> pair<int, bool> rub(const vector<T> &v, const T &key) { int ind = upper_bound(v.rbegin(), v.rend(), key, [](const T &l, const T &r) { return l > r; }) - v.rbegin(); if (ind == (int)v.size()) return make_pair(0, false); return make_pair((int)v.size() - 1 - ind, true); }
     template <class T> pair<int, bool> lb(const vector<T> &v, const T &key) { int ind = lower_bound(v.begin(), v.end(), key) - v.begin(); if (ind == (int)v.size()) return make_pair(0, false); return make_pair(ind, true); }
     template <class T> pair<int, bool> rlb(const vector<T> &v, const T &key) { int ind = lower_bound(v.rbegin(), v.rend(), key, [](const T &l, const T &r) { return l > r; }) - v.rbegin(); if (ind == (int)v.size()) return make_pair(0, false); return make_pair((int)v.size() - 1 - ind, true); }
-    // clang-format on
 
     int main() {
         ios::sync_with_stdio(false);
@@ -39,252 +37,76 @@ snippet template
 				${0}
         return 0;
     }
-snippet mod1007
-    using mint = modint1000000007;
-snippet mod9982
-    using mint = modint998244353;
-snippet debug
-    #ifdef _DEBUG
-    #endif
-snippet yes
-    cerr << "yes" << endl;
-snippet bit
-    for (int ${1:s} = 0; s < (1 << ${2:n}); s++) {
-        for (int i = 0; i < $2; i++) {
-          if (itbit(s, i)) {
-            ${3}
-          }
-        }
-    }
-snippet for
-    for (int ${1:i} = 0; $1 < ${2:n}; $1++) {
-        ${3}
-    }
-snippet ford
-    for (int ${1:i} = ${2:n - 1}; $1 >= 0; $1--) {
-        ${3}
-    }
-snippet re
-    resize(${1});
-    ${2}
-snippet --
-    rep(i, ${1:a}.size()) $1[i]--;
-    ${2}
-snippet ran
-    ${1:A}.begin(), $1.end());
-    ${2}
-snippet rran
-    ${1:A}.rbegin(), $1.rend());
-    ${2}
-snippet iota
-    iota(${1:a}.begin(), $1.end(), 0);
-    ${2}
-snippet sortt
-    sort(${1:a}.begin(), $1.end(), [&](${2:int} l, $2 r) {
-          ${3}
-        });
-snippet lb
-    lower_bound(${1:A}.begin(), $1.end(), ${2:key});
-    ${3}
-snippet ub
-    upper_bound(${1:A}.begin(), $1.end(), ${2:key});
-    ${3}
-snippet unique
-    ${1:A}.erase(unique($1.begin(), $1.end()), $1.end());
-    ${2}
-snippet remove
-    ${1:A}.erase(remove($1.begin(), $1.end(), ${2:0}), $1.end());
-    ${3}
-snippet inf-1
-    (${1:ans} == INF ? -1 : $1)${2}
-snippet i64f-1
-    (${1:ans} == I64F ? -1 : $1)${2}
-snippet for;
-    for (;;) {
-        ${1}
-    }
-snippet forj
-    for (${1:int} ${2:i} = ${3:0}; $2 < ${4}; $2++) {
-        for (${5:int} ${6:j} = ${7:0}; $6 < ${8}; $6++) {
-          ${9}
-        }
-      }
-snippet fork
-    for (${1:int} ${2:i} = ${3:0}; $2 < ${4}; $2++) {
-        for (${5:int} ${6:j} = ${7:0}; $6 < ${8}; $6++) {
-          for (${9:int} ${10:k} = ${11:0}; $10 < ${12}; $10++) {
-            ${11}
-          }
-        }
-      }
-snippet fora
-    for (auto ${1:v} : ${2:a}) {
-        ${3}
-    }
-snippet forb
-    for (auto& ${1:v} : ${2:a}) {
-        ${3}
-    }
-snippet ford
-    for (${1:int} ${2:i} = ${3:n - 1}; $2 >= ${4:0}; $2--) {
-        ${5}
-    }
-snippet rep
-    rep(${1:i}, ${2:n}) ${3}
-snippet out
-    cout << ${1:ans} << endl;
-    ${2}
-snippet sout
-    cout << fixed << setprecision(10) << ${1:ans} << endl;
-    ${2}
-snippet sout
-    cout << fixed << setprecision(10) << ${1:ans} << endl;
-    ${2}
-snippet inf
-    (${1:ans} == INF ? -1 : $1)
-snippet lnf
-    (${1:ans} == I64F ? -1LL : $1)
-snippet vout
-    for(int i_=0;i_<${1}.size();i_++)cout<<$1[i_]<<(i_+1==$1.size()?"\n":" ");
-    ${3}
-snippet vout2
-    rep(i_,${1}.size())rep(j_,$1[i_].size())cout<<$1[i_][j_]<<(j_+1==$1[i_].size()?"\n":" ");
-    ${3}
-snippet voutn
-    for(int i_=0;i_<${1}.size();i_++)cout<<$1[i_]<<endl;
-    ${3}
-snippet voutpn
-    for(int i_=0;i_<${1}.size();i_++)cout<<$1[i_].first<<" "<<$1[i_].second<<endl;
-    ${3}
-snippet verrpn
-    for(int i_=0;i_<${1}.size();i_++)cerr<<$1[i_].first<<" "<<$1[i_].second<<endl;
-    ${3}
-snippet verr
-    cerr<<"${1} ";rep(i_,$1.size())cerr<<$1[i_]<<(i_+1==$1.size()?"\n":" ");
-    ${3}
-snippet verr2
-    cerr<<"${1}\n";rep(i_,$1.size())rep(j_,$1[i_].size())cerr<<$1[i_][j_]<<(j_+1==$1[i_].size()?"\n":" ");
-    ${3}
-snippet verrm
-    cerr<<"${1} ";rep(i_,$1.size())cerr<<$1[i_].val(0<<(i_+1==$1.size()?"\n":" ");
-    ${3}
-snippet verr2m
-    cerr<<"${1}\n";rep(i_,$1.size())rep(j_,$1[i_].size())cerr<<$1[i_][j_].val()<<(j_+1==$1[i_].size()?"\n":" ");
-    ${3}
-snippet verrnpair
-    for(int i_=0;i_<${1}.size();i_++)cout<<$1[i_].first<<" "<<$1[i_].second<<endl;
-    ${3}
-snippet tov
-	vector to(n, vector<int>());
-snippet pb
-	push_back(${1});
-    ${1}
-snippet pq
-	priority_queue<${1}, vector<$1>, greater<$1>> pq;
-    ${2}
-snippet tyes
-    bool yes = true;
-snippet fyes
-    bool yes = false;
-snippet cYes
-    cout << (yes ? "Yes" : "No") << endl;
-    ${1}
-snippet cYES
-    cout << (yes ? "YES" : "NO") << endl;
-    ${1}
-snippet cyes
-    cout << (yes ? "yes" : "no") << endl;
-    ${1}
-snippet in
-    int ${1}; cin >> $1;
-    ${2}
-snippet in2
-    int ${1}, ${2}; cin >> $1 >> $2;
-    ${3}
-snippet in3
-    int ${1}, ${2}, ${3}; cin >> $1 >> $2 >> $3;
-    ${4}
-snippet in4
-    int ${1}, ${2}, ${3}, ${4}; cin >> $1 >> $2 >> $3 >> $4;
-    ${5}
-snippet in5
-    int ${1}, ${2}, ${3}, ${4}, ${5}; cin >> $1 >> $2 >> $3 >> $4 >> $5;
-    ${6}
-snippet il
-    i64 ${1}; cin >> $1;
-    ${2}
-snippet il2
-    i64 ${1}, ${2}; cin >> $1 >> $2;
-    ${3}
-snippet il3
-    i64 ${1}, ${2}, ${3}; cin >> $1 >> $2 >> $3;
-    ${4}
-snippet il4
-    i64 ${1}, ${2}, ${3}, ${4}; cin >> $1 >> $2 >> $3 >> $4;
-    ${5}
-snippet is
-    string ${1}; cin >> $1;
-    ${2}
-snippet is2
-    string ${1}, ${2}; cin >> $1 >> $2;
-    ${3}
-snippet is3
-    string ${1}, ${2}, ${3}; cin >> $1 >> $2 >> $3;
-    ${4}
-snippet is4
-    string ${1}, ${2}, ${3}, ${4}; cin >> $1 >> $2 >> $3 >> $4;
-    ${5}
-snippet id
-    double ${1}; cin >> $1;
-    ${2}
-snippet id2
-    double ${1}, ${2}; cin >> $1 >> $2;
-    ${3}
-snippet id3
-    double ${1}, ${2}, ${3}; cin >> $1 >> $2 >> $3;
-    ${4}
-snippet id4
-    double ${1}, ${2}, ${3}, ${4}; cin >> $1 >> $2 >> $3 >> $4;
-    ${5}
-snippet ic
-    char ${1}; cin >> $1;
-    ${2}
-snippet ic2
-    char ${1}, ${2}; cin >> $1 >> $2;
-    ${3}
-snippet ic3
-    char ${1}, ${2}, ${3}; cin >> $1 >> $2 >> $3;
-    ${4}
-snippet ic4
-    char ${1}, ${2}, ${3} ,${4}; cin >> $1 >> $2 >> $3 >> $4;
-    ${5}
-snippet inv
-    vector<int> ${1:a}(${2:n}); rep(i, $2) cin >> $1[i];
-    ${3}
-snippet ilv
-    vector<i64> ${1:a}(${2:n}); rep(i, $2) cin >> $1[i];
-    ${3}
-snippet inv2
-    vector ${1:a}(${2:h}, vector<int>(${3:w})); rep(i, $2) rep(j, $3) cin >> $1[i][j];
-    ${4}
-snippet v2
-    vector<vector<int>> ${1:g};
-    ${2}
-snippet valid
-    if (${1:i} < 0 or $1 >= ${2:h} or ${3:j} < 0 or $3 >= ${4:w}) continue;
-    ${5}
-snippet didj
-    int di[] = {0, 1, 0, -1};
-    int dj[] = {1, 0, -1, 0};
-snippet ninj
-    for (int k_ = 0; k_ < ${1:4}; k_++) {
-        int ni = i + di[k_];
-        int nj = j + dj[k_];
-        if (ni < 0 or ni >= ${2:h} or nj < 0 or nj >= ${3:w}) continue;
-        ${4}
-    }
-snippet popcount
-    __builtin_popcount(${1})
+snippet rollinghash
+    const unsigned bases[64] = {257,262,266,275,276,281,285,290,296,302,306,310,311,313,323,333,344,345,350,357,367,370,373,402,423,425,431,440,442,443,454,457,458,462,471,478,481,487,489,492,499,501,502,503,506,514,524,532,535,541,550,552,557,559,562,563,567,570,571,580,592,597,604,612};
+    const u64 mod = 0x1fffffffffffffff, base = bases[chrono::duration_cast<chrono::microseconds>(chrono::system_clock::now().time_since_epoch()).count() & 63];
+    struct rollinghash {
+        public:
+            rollinghash() : rollinghash("") {}
+            explicit rollinghash (const string &s) {
+                i64 n = s.size();
+                hashed.assign(n + 1, 0);
+                power.assign(n + 1, 0);
+                power[0] = 1;
+                for(i64 i = 0; i < n; i++) {
+                    power[i + 1] = mul(power[i], base);
+                    hashed[i + 1] = mul(hashed[i], base) + s[i];
+                    if(hashed[i + 1] >= mod) hashed[i + 1] -= mod;
+                }
+            }
+
+            u64 get(i64 l, i64 r) const {
+                u64 ret = hashed[r] + mod - mul(hashed[l], power[r - l]);
+                if(ret >= mod) ret -= mod;
+                return ret;
+            }
+
+            u64 connect(u64 h1, u64 h2, i64 h2len) const {
+                u64 ret = mul(h1, power[h2len]) + h2;
+                if(ret >= mod) ret -= mod;
+                return ret;
+            }
+
+            void connect(const string &s){
+                i64 n = hashed.size() - 1, m = s.size();
+                hashed.resize(n + m + 1);
+                power.resize(n + m + 1);
+                for(i64 i = n; i < n + m; i++) {
+                    power[i + 1] = mul(power[i], base);
+                    hashed[i + 1] = mul(hashed[i], base) + s[i - n];
+                    if(hashed[i + 1] >= mod) hashed[i + 1] -= mod;
+                }
+            }
+
+            i64 LCP(const rollinghash &b, i64 l1, i64 r1, i64 l2, i64 r2) {
+                i64 len = min(r1 - l1, r2 - l2);
+                i64 low = -1, high = len + 1;
+                while(high - low > 1) {
+                    i64 mid = (low + high) / 2;
+                    if(get(l1, l1 + mid) == b.get(l2, l2 + mid)) low = mid;
+                    else high = mid;
+                }
+                return low;
+            }
+
+        private:
+            vector<u64> hashed, power;
+
+            static constexpr u64 mask(i64 a){ return (1ull << a) - 1; }
+
+            inline u64 mul(u64 a, u64 b) const {
+                u64 a31 = a >> 31, b31 = b >> 31;
+                a &= mask(31);
+                b &= mask(31);
+                u64 x = a * b31 + b * a31;
+                u64 ans = (a31 * b31 << 1) + (x >> 30) + ((x & mask(30)) << 31) + a * b;
+                ans = (ans >> 61) + (ans & mod);
+                if(ans >= mod) ans -= mod;
+                return ans;
+            }
+    };
+
+######## 整備済み #######
 snippet sieve
     struct sieve {
         public:
@@ -474,67 +296,6 @@ snippet dijkstra
         }
         return ret;
     }
-snippet seg
-    using S = i64;
-    S op(S a, S b) { return ; }
-    S e() { return ; }
-    segtree<S, op, e> seg();
-snippet segsum
-    using S = i64;
-    S op(S a, S b) { return a + b; }
-    S e() { return 0LL; }
-    segtree<S, op, e> seg();
-snippet segmin
-    using S = i64;
-    S op(S a, S b) { return min(a, b); }
-    S e() { return I64F; }
-    segtree<S, op, e> seg();
-snippet segmax
-    using S = i64;
-    S op(S a, S b) { return max(a, b); }
-    S e() { return -I64F; }
-    segtree<S, op, e> seg();
-snippet lazyseg
-    using S = i64;
-    using F = i64;
-    S op(S a, S b) { return ; }
-    S e() { return ; }
-    S mapping(F f, S x) { return ; }
-    //after, before
-    F composition(F f, F g) { return ; }
-    //mapping(id(), a) == a
-    F id (){ return ; }
-    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
-snippet lazysegsumadd
-    struct S {
-        i64 value;
-        i64 size;
-    };
-    using F = i64;
-    S op(S a, S b) { return {a.value + b.value, a.size + b.size} ; }
-    S e() { return {0, 0}; }
-    S mapping(F f, S x) { return {x.value + x.size * f, x.size} ; }
-    F composition(F f, F g) { return f + g; }
-    F id (){ return 0LL; }
-    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
-snippet lazysegminadd
-    using S = i64;
-    using F = i64;
-    S op(S a, S b) { return min(a, b); }
-    S e() { return I64F; }
-    S mapping(F f, S x) { return x + f; }
-    F composition(F f, F g) { return f + g; }
-    F id (){ return 0LL; }
-    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
-snippet lazysegmaxadd
-    using S = i64;
-    using F = i64;
-    S op(S a, S b) { return max(a, b); }
-    S e() { return -I64F; }
-    S mapping(F f, S x) { return x + f; }
-    F composition(F f, F g) { return f + g; }
-    F id (){ return 0LL; }
-    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
 snippet cord
     template<class T>
     void cord(vector<T>& a) {
@@ -1285,74 +1046,6 @@ snippet matmul
         rep(i, h) rep(j, w) rep(k, h1) v[i][j] += l[i][k] * r[k][j];
         return v;
     }
-snippet rollinghash
-    const unsigned bases[64] = {257,262,266,275,276,281,285,290,296,302,306,310,311,313,323,333,344,345,350,357,367,370,373,402,423,425,431,440,442,443,454,457,458,462,471,478,481,487,489,492,499,501,502,503,506,514,524,532,535,541,550,552,557,559,562,563,567,570,571,580,592,597,604,612};
-    const u64 mod = 0x1fffffffffffffff, base = bases[chrono::duration_cast<chrono::microseconds>(chrono::system_clock::now().time_since_epoch()).count() & 63];
-    struct rollinghash {
-        public:
-            rollinghash() : rollinghash("") {}
-            explicit rollinghash (const string &s) {
-                i64 n = s.size();
-                hashed.assign(n + 1, 0);
-                power.assign(n + 1, 0);
-                power[0] = 1;
-                for(i64 i = 0; i < n; i++) {
-                    power[i + 1] = mul(power[i], base);
-                    hashed[i + 1] = mul(hashed[i], base) + s[i];
-                    if(hashed[i + 1] >= mod) hashed[i + 1] -= mod;
-                }
-            }
-
-            u64 get(i64 l, i64 r) const {
-                u64 ret = hashed[r] + mod - mul(hashed[l], power[r - l]);
-                if(ret >= mod) ret -= mod;
-                return ret;
-            }
-
-            u64 connect(u64 h1, u64 h2, i64 h2len) const {
-                u64 ret = mul(h1, power[h2len]) + h2;
-                if(ret >= mod) ret -= mod;
-                return ret;
-            }
-
-            void connect(const string &s){
-                i64 n = hashed.size() - 1, m = s.size();
-                hashed.resize(n + m + 1);
-                power.resize(n + m + 1);
-                for(i64 i = n; i < n + m; i++) {
-                    power[i + 1] = mul(power[i], base);
-                    hashed[i + 1] = mul(hashed[i], base) + s[i - n];
-                    if(hashed[i + 1] >= mod) hashed[i + 1] -= mod;
-                }
-            }
-
-            i64 LCP(const rollinghash &b, i64 l1, i64 r1, i64 l2, i64 r2) {
-                i64 len = min(r1 - l1, r2 - l2);
-                i64 low = -1, high = len + 1;
-                while(high - low > 1) {
-                    i64 mid = (low + high) / 2;
-                    if(get(l1, l1 + mid) == b.get(l2, l2 + mid)) low = mid;
-                    else high = mid;
-                }
-                return low;
-            }
-
-        private:
-            vector<u64> hashed, power;
-
-            static constexpr u64 mask(i64 a){ return (1ull << a) - 1; }
-
-            inline u64 mul(u64 a, u64 b) const {
-                u64 a31 = a >> 31, b31 = b >> 31;
-                a &= mask(31);
-                b &= mask(31);
-                u64 x = a * b31 + b * a31;
-                u64 ans = (a31 * b31 << 1) + (x >> 30) + ((x & mask(30)) << 31) + a * b;
-                ans = (ans >> 61) + (ans & mod);
-                if(ans >= mod) ans -= mod;
-                return ans;
-            }
-    };
 snippet z_algorithm
     vector<int> z_algorithm(const string& s) {
         int n = s.size();
@@ -1664,3 +1357,65 @@ snippet lazysegbeats
     }
     lazy_segtree_beats<S, op, e, F, mapping, composition, id> seg();
 
+############################### end of library codes ###############################
+snippet seg
+    using S = i64;
+    S op(S a, S b) { return ; }
+    S e() { return ; }
+    segtree<S, op, e> seg();
+snippet segsum
+    using S = i64;
+    S op(S a, S b) { return a + b; }
+    S e() { return 0LL; }
+    segtree<S, op, e> seg();
+snippet segmin
+    using S = i64;
+    S op(S a, S b) { return min(a, b); }
+    S e() { return I64F; }
+    segtree<S, op, e> seg();
+snippet segmax
+    using S = i64;
+    S op(S a, S b) { return max(a, b); }
+    S e() { return -I64F; }
+    segtree<S, op, e> seg();
+snippet lazyseg
+    using S = i64;
+    using F = i64;
+    S op(S a, S b) { return ; }
+    S e() { return ; }
+    S mapping(F f, S x) { return ; }
+    //after, before
+    F composition(F f, F g) { return ; }
+    //mapping(id(), a) == a
+    F id (){ return ; }
+    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
+snippet lazysegsumadd
+    struct S {
+        i64 value;
+        i64 size;
+    };
+    using F = i64;
+    S op(S a, S b) { return {a.value + b.value, a.size + b.size} ; }
+    S e() { return {0, 0}; }
+    S mapping(F f, S x) { return {x.value + x.size * f, x.size} ; }
+    F composition(F f, F g) { return f + g; }
+    F id (){ return 0LL; }
+    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
+snippet lazysegminadd
+    using S = i64;
+    using F = i64;
+    S op(S a, S b) { return min(a, b); }
+    S e() { return I64F; }
+    S mapping(F f, S x) { return x + f; }
+    F composition(F f, F g) { return f + g; }
+    F id (){ return 0LL; }
+    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
+snippet lazysegmaxadd
+    using S = i64;
+    using F = i64;
+    S op(S a, S b) { return max(a, b); }
+    S e() { return -I64F; }
+    S mapping(F f, S x) { return x + f; }
+    F composition(F f, F g) { return f + g; }
+    F id (){ return 0LL; }
+    lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();

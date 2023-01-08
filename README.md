@@ -18,3 +18,14 @@
 
 ### pair\<int, bool\> rlb(vector\<T\> v, T key):
 * 第一要素にv[i] <= kとなる最大のiを返す。存在しない時第二要素でfalseを返す
+
+## RollingHash
+[Original](https://github.com/tatyam-prime/kyopro_library/blob/master/RollingHash.cpp)
+### RollingHash(string s)
+* コンストラクタ
+### get(i64 l, i64 r)
+* [l, r)のハッシュを取得
+### connect(u64 h1, u64 h2, 64 h2len) 
+* ハッシュh1, h2を繋げたハッシュを取得する。h2lenはハッシュh2に対応する文字列の長さ。
+### connect(string s) 
+* sを繋げたハッシュに更新
