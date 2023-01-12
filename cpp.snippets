@@ -16,6 +16,7 @@ snippet template
     using i_i_i_i = tuple<int, int, int, int>;
     using l_l_l = tuple<i64, i64, i64>;
     using l_l_l_l = tuple<i64, i64, i64, i64>;
+    using _bool = int;
     #define rep(i, n) for(int i = 0; i < n; i++)
     #define ifbit(n,k) ((n>>k)&1) //if kth bit of n is on then true (sitakara, 0-indexed)
     #define zpad(i) cout << setfill('0') << setw(i)
@@ -37,6 +38,81 @@ snippet template
 				${0}
         return 0;
     }
+snippet prime
+    struct prime {
+        public:
+            prime() : isp(1e7) {}
+            explicit prime (int n) : _n(n), isp(vector<_bool>(n + 1, true)), mfact(vector<int>(n + 1, -1)) {
+                isp[0] = isp[1] = false;
+                mfact[0] = mfact[1] = 1;
+                for (int i = 2; i <= n; i++) {
+                    if (isp[i]) {
+                        ps.push_back(i);
+                        mfact[i] = i;
+                        for (int j = 2 * i; j <= n; j += i) {
+                            isp[j] = false;
+                            if (mfact[j] == -1) mfact[j] = i;
+                        }
+                    }
+                }
+            }
+            vector<l_l> fast_get(int n) {
+                vector<l_l> ret;
+                assert(0 < n and n <= _n);
+                int i = -1;
+                while (n > 1) {
+                    if (i == -1 or ret[i].first != mfact[n]) {
+                        ret.push_back({mfact[n], 0});
+                        i++;
+                    }
+                    n /= mfact[n];
+                    ret[i].second++;
+                }
+                return ret;
+            }
+            vector<l_l> get(i64 n) {
+                vector<l_l> ret;
+                assert(0 < n and n <= ps.back() * ps.back());
+                int i = 0, cnt = -1;
+                while (ps[i] * ps[i] <= n) {
+                    if (n % ps[i] == 0) {
+                        ret.push_back({ps[i], 1});
+                        cnt++;
+                        n /= ps[i];
+                        while (n % ps[i] == 0) {
+                            n /= ps[i];
+                            ret[cnt].second++;
+                        }
+                    }
+                    i++;
+                    if (i == ps.size()) break;
+                }
+                if (n > 1) ret.push_back({n, 1});
+                return ret;
+            }
+            bool operator[](int n) {
+                assert(0 < n and n <= _n);
+                return isp[n];
+            }
+            vector<i64> get_all(i64 n) {
+                i64 i = 1;
+                vector<i64> ret;
+                while (i * i <= n) {
+                    if (n % i == 0) {
+                        ret.push_back(i);
+                        if (n / i != i) ret.push_back(n / i);
+                    }
+                    i++;
+                }
+                sort(ret.begin(), ret.end());
+                return ret;
+            }
+        private:
+            int _n;
+            vector<_bool> isp; //is-prime
+            vector<i64> ps; //primes
+            vector<int> mfact;
+    };
 snippet rollinghash
     const unsigned bases[64] = {257,262,266,275,276,281,285,290,296,302,306,310,311,313,323,333,344,345,350,357,367,370,373,402,423,425,431,440,442,443,454,457,458,462,471,478,481,487,489,492,499,501,502,503,506,514,524,532,535,541,550,552,557,559,562,563,567,570,571,580,592,597,604,612};
     const u64 mod = 0x1fffffffffffffff, base = bases[chrono::duration_cast<chrono::microseconds>(chrono::system_clock::now().time_since_epoch()).count() & 63];
@@ -174,22 +250,6 @@ snippet sieve
             vector<int> ps;
             vector<int> mfact;
     };
-snippet zrekyo
-    vector<i64> allp(const i64& n) {
-        vector<i64> ret;
-        i64 now = 1;
-        while(now * now <= n) {
-          cerr << now << endl;
-          if (n % now == 0) {
-            ret.push_back(now);
-            ret.push_back(n / now);
-          }
-          now++;
-        }
-        ret.erase(unique(ret.begin(), ret.end()), ret.end());
-        sort(ret.begin(), ret.end());
-        return ret;
-    }
 snippet fact
     class factorial {
         private:
