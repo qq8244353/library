@@ -8,6 +8,7 @@ l_l : pair\<long long, long long\><br>
 l_l_l : pair\<long long, long long, long long\><br>
 
 # 説明書
+Template以外は名前の昇順
 ## Template
 ### bool chmax(k, n):
 * n > kのときkをnに更新.更新した時trueを返す<br>
