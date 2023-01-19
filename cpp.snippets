@@ -1,5 +1,6 @@
 #setl noexpandtab
 snippet template
+    // *INDENT-OFF*
     #include "bits/stdc++.h"
     #include <unistd.h>
     using namespace std;
@@ -32,6 +33,7 @@ snippet template
     template <class T> pair<int, bool> lb(const vector<T> &v, const T &key) { int ind = lower_bound(v.begin(), v.end(), key) - v.begin(); if (ind == (int)v.size()) return make_pair(0, false); return make_pair(ind, true); }
     template <class T> pair<int, bool> rlb(const vector<T> &v, const T &key) { int ind = lower_bound(v.rbegin(), v.rend(), key, [](const T &l, const T &r) { return l > r; }) - v.rbegin(); if (ind == (int)v.size()) return make_pair(0, false); return make_pair((int)v.size() - 1 - ind, true); }
     // end of template
+    // *INDENT-ON*
 
     int main() {
         ios::sync_with_stdio(false);
@@ -1480,3 +1482,6 @@ snippet lazysegmaxadd
     F composition(F f, F g) { return f + g; }
     F id (){ return 0LL; }
     lazy_segtree<S, op, e, F, mapping, composition, id> lzseg();
+snippet verr
+    cerr<<"${1} ";rep(i_,$1.size())cerr<<$1[i_]<<(i_+1==$1.size()?"\n":" ");
+    ${3}
