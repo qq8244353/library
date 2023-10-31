@@ -7,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    - uses: actions/checkout@v1
+
     - name: add atcoder libary
       run: |
         ls
         pwd
-
-    - uses: actions/checkout@v1
+        cp -r include/atcoder /usr/include/atcoder
 
     - name: Set up Python
       uses: actions/setup-python@v1
