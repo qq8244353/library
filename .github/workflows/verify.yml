@@ -10,7 +10,7 @@ jobs:
     - name: add atcoder libary
       run: |
         ls
-        cp -r include/atcoder /usr/include/atcoder
+        pwd
 
     - uses: actions/checkout@v1
 
