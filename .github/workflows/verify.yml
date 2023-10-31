@@ -9,6 +9,7 @@ jobs:
     steps:
     - name: add atcoder libary
       run: |
+        ls
         cp -r include/atcoder /usr/include/atcoder
 
     - uses: actions/checkout@v1
