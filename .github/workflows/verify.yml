@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: test
+    - name: add atcoder libary
       run: |
-        ls /usr/include
+        cp -r include/atcoder /usr/include/atcoder
 
     - uses: actions/checkout@v1
 
