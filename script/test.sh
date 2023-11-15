@@ -9,7 +9,7 @@ do
   FULLPATH=$(pwd)/test/${l}
   MODULE=$(echo ${l} | sed -e 's/\..*//g')
   if [[ $(head -n 1 ${FULLPATH}) =~ "#define IGNORE" ]]; then
-    clang++ ${FULLPATH} -std=c++20 -I . -I ./include
+    g++ ${FULLPATH} -std=c++20 -I . -I ./include
     # in/0001.txt
     INPUT_DIR="testcases/${MODULE}/in"
     OUTPUT_DIR="testcases/${MODULE}/out"
