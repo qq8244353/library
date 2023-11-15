@@ -24,3 +24,6 @@ jobs:
 
     - name: Run tests
       run: oj-verify all
+
+    - name: Run local tests
+      run: ./script/test.sh
