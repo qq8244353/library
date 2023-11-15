@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
-#include "tempalte.cpp"
+#include "template.cpp"
 #include "tree/lca.cpp"
 
 int main() {
